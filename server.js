@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 //Greeting app
 app.get('/greeting/:name', (req, res) => {
@@ -32,6 +34,7 @@ app.get('/magic/ ', (req, res) => {
     res.render('template', {title:'Magic 8 Balls', message:magic_ball(req.query.response)})
 })
 
+//Fibonacci
 app.get("/:num", (req, res) => {
     const fiboCheck = (num) => {
         let numTwo = 5 * (num * num) + 4
